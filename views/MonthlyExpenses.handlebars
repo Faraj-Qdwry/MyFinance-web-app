@@ -1,0 +1,186 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+<!--write page content here -->
+
+<div style="background-image: url('img/finance2.jpg'); height: 200vh;">
+    <h3></h3>
+    <h3></h3>
+
+    <div class="container jumbotron">
+        <h1>Monthly Expenses</h1>
+        <div>
+            <ol id="goalsList" class="list-group"></ol>
+        </div>
+    </div>
+
+
+    <div class="container maincontent">
+        <div class="jumbotron">
+
+            <!--<h2>Monthly Expenses</h2>-->
+
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Bills</th>
+                    <th>Food</th>
+                    <th>Groceries</th>
+                    <th>Transportation</th>
+                    <th>Others</th>
+                </tr>
+                <tr>
+                    <td>January</td>
+                    <td>200$</td>
+                    <td>79$</td>
+                    <td>112$</td>
+                    <td>75$</td>
+                    <td>139$</td>
+                </tr>
+                <tr>
+                    <td>February</td>
+                    <td>187$</td>
+                    <td>74$</td>
+                    <td>103$</td>
+                    <td>70$</td>
+                    <td>125$</td>
+                </tr>
+                <tr>
+                    <td>March</td>
+                    <td>223$</td>
+                    <td>87$</td>
+                    <td>131$</td>
+                    <td>83$</td>
+                    <td>142$</td>
+                </tr>
+                <tr>
+                    <td>April</td>
+                    <td>255$</td>
+                    <td>86$</td>
+                    <td>127$</td>
+                    <td>72$</td>
+                    <td>150$</td>
+                </tr>
+                <tr>
+                    <td>May</td>
+                    <td>221$</td>
+                    <td>73$</td>
+                    <td>132$</td>
+                    <td>70$</td>
+                    <td>129$</td>
+                </tr>
+                <tr>
+                    <td>June</td>
+                    <td>219$</td>
+                    <td>78$</td>
+                    <td>145$</td>
+                    <td>76$</td>
+                    <td>143$</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>265$</td>
+                    <td>82$</td>
+                    <td>134$</td>
+                    <td>71$</td>
+                    <td>154$</td>
+                </tr>
+                <tr>
+                    <td>August</td>
+                    <td>260$</td>
+                    <td>96$</td>
+                    <td>123$</td>
+                    <td>69$</td>
+                    <td>169$</td>
+                </tr>
+                <tr>
+                    <td>September</td>
+                    <td>224$</td>
+                    <td>98$</td>
+                    <td>102$</td>
+                    <td>83$</td>
+                    <td>144$</td>
+                </tr>
+                <tr>
+                    <td>October</td>
+                    <td>210$</td>
+                    <td>82$</td>
+                    <td>125$</td>
+                    <td>59$</td>
+                    <td>137$</td>
+                </tr>
+                <tr>
+                    <td>November</td>
+                    <td>195$</td>
+                    <td>85$</td>
+                    <td>120$</td>
+                    <td>69$</td>
+                    <td>135$</td>
+                </tr>
+                <tr>
+                    <td>December</td>
+                    <td>189$</td>
+                    <td>79$</td>
+                    <td>149$</td>
+                    <td>74$</td>
+                    <td>154$</td>
+                </tr>
+            </table>
+            <div id="piechart"></div>
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+            <script type="text/javascript">
+                // Load google charts
+                google.charts.load('current', {'packages': ['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                // Draw the chart and set the chart values
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Category', 'Cost per Month'],
+                        ['Bills', 220.6],
+                        ['Food', 83],
+                        ['Groceries', 125.2],
+                        ['Transportation', 72.5],
+                        ['Others', 143.4]
+                    ]);
+
+                    // Optional; add a title and set the width and height of the chart
+                    var options = {'title': 'Average Monthly Expenses', 'width': 1045, 'height': 400};
+
+                    // Display the chart inside the <div> element with id="piechart"
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                    chart.draw(data, options);
+                }
+            </script>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

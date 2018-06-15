@@ -1,0 +1,265 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>MyFinance</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+
+    <style>
+        /* Remove margins and padding from the list */
+        #myUL {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the list items */
+        #myUL li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #myUL li form .p{
+            display: none;
+        }
+        /* Set all odd list items to a different color (zebra-stripes) */
+        #myUL li:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        /* Darker background-color on hover */
+        #myUL li:hover {
+            background: #ddd;
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        #myUL li.checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+        }
+
+        /* Add a "checked" mark when clicked on */
+        #myUL li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+
+        /* Style the close button */
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+        .close:hover {
+            background-color: #00c3f4;
+            color: white;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #3a92f4;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the input */
+        input {
+            border: none;
+            width: 75%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }
+
+        /* Style the "Add" button */
+        .addBtn {
+            padding: 10px;
+            width: 25%;
+            background: #d9d9d9;
+            color: #555;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dellBtn {
+            background: #d95a28;
+            color: #fffdfe;
+            float: right;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .addBtn:hover {
+            background-color: #bbb;
+        }
+        .dellBtn:hover {
+            background-color: #bbb;
+        }
+    </style>
+
+    <script>
+
+        function submited() {
+
+            var cat = document.getElementById('category').value;
+            var cost = document.getElementById('cost').value;
+            var amountperM = document.getElementById('amountpermonth').value;
+            var current = document.getElementById('current').value;
+
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                clearInterval(id);
+                if ((current / cost) * 100 > 100) {
+
+                    width = 100;
+                    elem.style.width = width + '%';
+                    elem.innerHTML = width * 1 + '%';
+                }
+                else {
+
+                    width = (current / cost) * 100;
+                    elem.style.width = width + '%';
+                    elem.innerHTML = width * 1 + '%';
+                }
+
+            }
+
+
+            var month = Math.floor((cost - current) / amountperM);
+            var text = month + " more months to reach the goal";
+            document.getElementById('text').innerHTML = text;
+            console.log(text);
+
+
+        }
+    </script>
+
+</head>
+<body>
+
+<!--do not change anything before this line -->
+<!--write page content here -->
+
+
+<div class="col-12" style="background-image: url('img/finance2.jpg'); height:200vh;">
+    <h3></h3>
+    <h3></h3>
+
+    <div class="container jumbotron col-2 bg-info">
+        <h1 style=" color: white;">Goals</h1>
+    </div>
+
+    <div>
+        <div class="container jumbotron col-9">
+            <form>
+                <div class="form-group">
+                    <label for="category" class="col-md-3 control-label">Saving For</label>
+                    <select class="col-md-12 form-control" id="category">
+                        <option>Further Studies</option>
+                        <option>Traveling</option>
+                        <option>Buying a Property</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="cost" class="col-md-3 control-label">Cost</label>
+                    <div class="col-md-12">
+                        <input type="number" class="form-control" id="cost" placeholder="Total Cost">
+                    </div>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="amountpermonth" class="col-md-12 control-label">Amount to Save Per Month</label>
+                    <div class="col-md-12">
+                        <input type="number" class="form-control" id="amountpermonth" placeholder="Savings">
+                    </div>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="current" class="col-md-3 control-label">Current Savings:</label>
+                    <div class="col-md-12">
+                        <input type="number" class="form-control" id="current" placeholder="Total Savings">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container jumbotron col-9">
+            <button class="btn btn-primary" onclick="submited()">Calculate</button>
+            <h3>Progress</h3>
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+            <p id="text"></p>
+            <h3></h3>
+        </div>
+
+        <div class="container jumbotron col-9">
+            <form method="post" action="Goals" id="myDIV" class="header">
+                <h2 style="margin:5px">My Goals List</h2>
+                <input type="text" name="goal" id="myInput" placeholder="Add a new Goal...">
+                <input type="submit" class="addBtn">
+            </form>
+
+            <ul id="myUL">
+                {{#each goals}}
+                <li>
+                    <form method="post" action="Goals/delete">
+                        {{this.goal}}
+                        <input value="{{this.id}}" type="text" class="p" name="p">
+                        <button type="submit" class="dellBtn">Remove</button>
+                    </form>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

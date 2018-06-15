@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyFinance</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+
+    <div class="pos-f-t">
+        <nav class="navbar navbar-light">
+            <svg viewbox="0 0 64 64">
+                <line id="nav-line-1" x1="8" x2="56" y1="16" y2="16" class="nav-line"/>
+                <line id="nav-line-2" x1="8" x2="56" y1="32" y2="32" class="nav-line"/>
+                <line id="nav-line-3" x1="8" x2="56" y1="48" y2="48" class="nav-line"/>
+
+                <line x1="16" x2="48" y1="16" y2="48" class="cross-line"/>
+                <line x1="16" x2="48" y1="48" y2="16" class="cross-line"/>
+                <rect class="rect" width="42" height="42" x="11" y="11"/>
+            </svg>
+
+            <a class="navbar-brand logos" href="/">
+                <h1 style="display: inline">MyFinance</h1>
+                <p style="color: black; display: inline; font-weight: bold;">&copy;</p>
+            </a>
+
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-light p-4 nav-tabs">
+                    <ul class="nav justify-content-center">
+                        {{#if user}}
+                        <!--
+                        <li role="presentation">
+                              <a href="/">Dashboard</a>
+                        </li>
+                        -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Goals">Set Goals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DailyExpenses/">Daily Expenses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/MonthlyExpenses/">Monthly Expenses</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="/users/logout">Logout</a>
+                        </li>
+                        {{else}}
+                        <li role="presentation"><a href="/users/login">Login</a></li>
+                        <li role="presentation"><a href="/users/register">Register</a></li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+            <nav class=" bg-white">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarToggleExternalContent"
+                        aria-controls="navbarToggleExternalContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon "></span>
+                </button>
+            </nav>
+        </nav>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+
+            {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
+
+            {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+            {{/if}}
+
+            {{{body}}}
+        </div>
+
+
+        <footer class="footer">
+            <h1>&copy; 2018 MyFinance, Inc.</h1>
+        </footer>
+
+    </div>
+</div> <!-- /container -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

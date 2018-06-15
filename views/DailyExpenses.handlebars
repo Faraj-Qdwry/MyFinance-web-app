@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<!--write page content here -->
+
+
+<div class="col-12" style="background-image: url('img/Back.jpg'); height:200vh;">
+    <div>
+        <h3></h3>
+        <h3></h3>
+
+        <div class="container jumbotron col-9">
+            <h1>Daily Expenses</h1>
+        </div>
+
+        <div class="col-9 container maincontent">
+            <div class="jumbotron">
+
+                <!--<h2>Monthly Expenses</h2>-->
+
+                <table>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Amount Spent</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                    {{#each daily}}
+                    <tr>
+                        <th>{{this.itemName}}</th>
+                        <th>{{this.category}}</th>
+                        <th>{{this.amount}}</th>
+                        <th>{{this.data}}</th>
+                        <th>
+                            <form method="post" action="delete">
+                                <input style="display: none" value="{{this.id}}" type="text" name="p">
+                                <button type="submit" class="bg-danger dellBtn">Remove</button>
+                            </form>
+                        </th>
+                    </tr>
+                    {{/each}}
+                </table>
+
+            </div>
+        </div>
+
+        <div class="container jumbotron col-9">
+
+            <form method="post" action="DailyExpenses">
+                <div class="form-group">
+                    <label for="budget" class="col-md-3 control-label">Monthly Budget</label>
+                    <div class="col-md-12">
+                        <input type="number" id="budget" class="form-control" name="budget"
+                               placeholder="Monthly Budget">
+                    </div>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="date" class="col-md-3 control-label">Date</label>
+                    <div class="col-md-12">
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="item" class="col-md-3 control-label">Item Name</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="item" name="item_name" placeholder="Item Name">
+                    </div>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="category" class="col-md-3 control-label">Category</label>
+                    <div class="col-md-12">
+                        <select class="col-md-12 form-control" id="category" name="category">
+                            <option>Bills</option>
+                            <option>Groceries</option>
+                            <option>Food</option>
+                            <option>Transportation</option>
+                            <option>Others</option>
+                        </select>
+                    </div>
+                </div>
+                <h3></h3>
+                <div class="form-group">
+                    <label for="spend" class="col-md-3 control-label">Amount Spent</label>
+                    <div class="col-md-12">
+                        <input type="number" class="form-control" id="spend" name="amount" placeholder="Amount Spent">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-1">
+                        <br><br>
+                        <input type="submit" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
